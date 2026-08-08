@@ -1,23 +1,1112 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <title>Mon application</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flip 7 - Calculateur</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f4f4f4;
+        color: #222;
+    }
+
+    header {
+        background: #111;
+        color: white;
+        text-align: center;
+        padding: 22px 15px;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 32px;
+    }
+
+    header p {
+        margin: 7px 0 0;
+        opacity: 0.8;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: auto;
+        padding: 20px;
+    }
+
+    .section {
+        background: white;
+        border-radius: 15px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+        margin-top: 0;
+    }
+
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    button.card {
+        width: 55px;
+        height: 70px;
+        border: 2px solid #ddd;
+        background: white;
+        border-radius: 10px;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    button.card:hover {
+        transform: translateY(-2px);
+    }
+
+    button.card.selected {
+        background: #ff5a36;
+        color: white;
+        border-color: #ff5a36;
+    }
+
+    button.special {
+        width: auto;
+        padding: 0 14px;
+        font-size: 14px;
+    }
+
+    .player {
+        border: 2px solid #eee;
+        border-radius: 12px;
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    .player-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+    }
+
+    .player-title h3 {
+        margin: 0;
+    }
+
+    .remove {
+        border: none;
+        background: #eee;
+        padding: 7px 10px;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 15px;
+    }
+
+    .main-button {
+        border: none;
+        background: #111;
+        color: white;
+        padding: 13px 18px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .main-button:hover {
+        opacity: 0.85;
+    }
+
+    .results {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 12px;
+    }
+
+    .result {
+        background: #f7f7f7;
+        border-radius: 12px;
+        padding: 18px;
+        text-align: center;
+    }
+
+    .result .value {
+        font-size: 30px;
+        font-weight: bold;
+        margin-top: 8px;
+    }
+
+    .danger {
+        color: #e53935;
+    }
+
+    .good {
+        color: #16823b;
+    }
+
+    .info {
+        background: #fff7df;
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 15px;
+        line-height: 1.5;
+    }
+
+    .hand {
+        margin-top: 10px;
+        min-height: 25px;
+    }
+
+    .mini-card {
+        display: inline-block;
+        background: #ff5a36;
+        color: white;
+        border-radius: 6px;
+        padding: 5px 8px;
+        margin: 3px;
+        font-weight: bold;
+        font-size: 13px;
+    }
+
+    .empty {
+        color: #888;
+        font-style: italic;
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        color: #777;
+        font-size: 13px;
+    }
+</style>
 </head>
 
 <body>
-    <h1>Bonjour !</h1>
 
-    <p id="message">Clique sur le bouton :</p>
+<header>
+    <h1>🃏 FLIP 7</h1>
+    <p>Calculateur de risque & d'espérance</p>
+</header>
 
-    <button onclick="direBonjour()">
-        Cliquez ici
-    </button>
+<div class="container">
 
-    <script>
-        function direBonjour() {
-            document.getElementById("message").innerText =
-                "Ça marche ! 🎉";
+    <!-- MES CARTES -->
+    <div class="section">
+        <h2>🃏 Mes cartes</h2>
+
+        <p>
+            Sélectionne les cartes que tu possèdes actuellement.
+        </p>
+
+        <div id="myCards" class="cards"></div>
+
+        <div class="hand" id="myHand"></div>
+    </div>
+
+
+    <!-- AUTRES JOUEURS -->
+    <div class="section">
+
+        <h2>👥 Cartes des autres joueurs</h2>
+
+        <p>
+            Sélectionne les cartes visibles chez les autres joueurs.
+            Tu peux laisser un joueur vide si tu ne connais aucune de ses cartes.
+        </p>
+
+        <div id="players"></div>
+
+        <div class="actions">
+            <button class="main-button" onclick="addPlayer()">
+                + Ajouter un joueur
+            </button>
+        </div>
+
+    </div>
+
+
+    <!-- CALCUL -->
+    <div class="section">
+
+        <h2>📊 Résultat</h2>
+
+        <div class="results">
+
+            <div class="result">
+                <div>Cartes restantes</div>
+                <div class="value" id="remaining">94</div>
+            </div>
+
+            <div class="result">
+                <div>💥 Risque de perdre</div>
+                <div class="value danger" id="bustProbability">0 %</div>
+            </div>
+
+            <div class="result">
+                <div>🎯 Espérance du prochain tirage</div>
+                <div class="value good" id="expectedGain">0</div>
+            </div>
+
+            <div class="result">
+                <div>📈 Score actuel</div>
+                <div class="value" id="currentScore">0</div>
+            </div>
+
+            <div class="result">
+                <div>📈 Espérance du score</div>
+                <div class="value good" id="expectedScore">0</div>
+            </div>
+
+        </div>
+
+        <div class="info" id="explanation">
+            Sélectionne tes cartes pour commencer.
+        </div>
+
+    </div>
+
+
+    <!-- RESET -->
+    <div class="section">
+
+        <button class="main-button" onclick="resetGame()">
+            🔄 Réinitialiser
+        </button>
+
+    </div>
+
+</div>
+
+<footer>
+    Flip 7 Calculator — V1
+</footer>
+
+
+<script>
+
+/*
+===========================================================
+COMPOSITION DU PAQUET FLIP 7
+===========================================================
+*/
+
+const deck = {
+
+    // Cartes numériques
+    0: 1,
+    1: 1,
+    2: 2,
+    3: 3,
+    4: 4,
+    5: 5,
+    6: 6,
+    7: 7,
+    8: 8,
+    9: 9,
+    10: 10,
+    11: 11,
+    12: 12,
+
+    // Modificateurs
+    "+2": 1,
+    "+4": 1,
+    "+6": 1,
+    "+8": 1,
+    "+10": 1,
+    "x2": 1,
+
+    // Actions
+    "Freeze": 3,
+    "Flip Three": 3,
+    "Second Chance": 3
+};
+
+
+/*
+===========================================================
+ÉTAT DU JEU
+===========================================================
+*/
+
+let myCards = [];
+let players = [];
+
+let playerId = 0;
+
+
+/*
+===========================================================
+CRÉATION DES BOUTONS
+===========================================================
+*/
+
+function createCardButtons(container, owner, index = null) {
+
+    container.innerHTML = "";
+
+    const numbers = [
+        0,1,2,3,4,5,6,7,8,9,10,11,12
+    ];
+
+    numbers.forEach(number => {
+
+        const button = document.createElement("button");
+
+        button.className = "card";
+        button.textContent = number;
+
+        let selected = false;
+
+        if (owner === "me") {
+            selected = myCards.includes(number);
+        } else {
+            selected = players[index].cards.includes(number);
         }
-    </script>
+
+        if (selected) {
+            button.classList.add("selected");
+        }
+
+        button.onclick = function() {
+
+            if (owner === "me") {
+
+                if (myCards.includes(number)) {
+                    myCards = myCards.filter(c => c !== number);
+                } else {
+                    myCards.push(number);
+                }
+
+            } else {
+
+                const cards = players[index].cards;
+
+                if (cards.includes(number)) {
+                    players[index].cards =
+                        cards.filter(c => c !== number);
+                } else {
+                    cards.push(number);
+                }
+            }
+
+            render();
+            calculate();
+
+        };
+
+        container.appendChild(button);
+
+    });
+
+
+    const specials = [
+        "+2",
+        "+4",
+        "+6",
+        "+8",
+        "+10",
+        "x2",
+        "Freeze",
+        "Flip Three",
+        "Second Chance"
+    ];
+
+    specials.forEach(cardName => {
+
+        const button = document.createElement("button");
+
+        button.className = "card special";
+        button.textContent = cardName;
+
+        let selected = false;
+
+        if (owner === "me") {
+            selected = myCards.includes(cardName);
+        } else {
+            selected = players[index].cards.includes(cardName);
+        }
+
+        if (selected) {
+            button.classList.add("selected");
+        }
+
+        button.onclick = function() {
+
+            if (owner === "me") {
+
+                if (myCards.includes(cardName)) {
+                    myCards =
+                        myCards.filter(c => c !== cardName);
+                } else {
+
+                    /*
+                    Les cartes spéciales existent en plusieurs
+                    exemplaires pour les actions.
+                    */
+
+                    const maxCopies =
+                        deck[cardName];
+
+                    const already =
+                        countCardEverywhere(cardName);
+
+                    if (already < maxCopies) {
+                        myCards.push(cardName);
+                    }
+                }
+
+            } else {
+
+                const cards = players[index].cards;
+
+                if (cards.includes(cardName)) {
+
+                    players[index].cards =
+                        cards.filter(c => c !== cardName);
+
+                } else {
+
+                    const maxCopies =
+                        deck[cardName];
+
+                    const already =
+                        countCardEverywhere(cardName);
+
+                    if (already < maxCopies) {
+                        cards.push(cardName);
+                    }
+                }
+            }
+
+            render();
+            calculate();
+
+        };
+
+        container.appendChild(button);
+
+    });
+}
+
+
+/*
+===========================================================
+COMPTE GLOBAL D'UNE CARTE
+===========================================================
+*/
+
+function countCardEverywhere(card) {
+
+    let count = 0;
+
+    if (myCards.includes(card)) {
+        count++;
+    }
+
+    players.forEach(player => {
+
+        player.cards.forEach(c => {
+
+            if (c === card) {
+                count++;
+            }
+
+        });
+
+    });
+
+    return count;
+}
+
+
+/*
+===========================================================
+AJOUTER UN JOUEUR
+===========================================================
+*/
+
+function addPlayer() {
+
+    playerId++;
+
+    players.push({
+        id: playerId,
+        cards: []
+    });
+
+    render();
+
+}
+
+
+/*
+===========================================================
+SUPPRIMER UN JOUEUR
+===========================================================
+*/
+
+function removePlayer(index) {
+
+    players.splice(index, 1);
+
+    render();
+    calculate();
+
+}
+
+
+/*
+===========================================================
+AFFICHAGE
+===========================================================
+*/
+
+function render() {
+
+    const myContainer =
+        document.getElementById("myCards");
+
+    createCardButtons(myContainer, "me");
+
+    renderHand(
+        document.getElementById("myHand"),
+        myCards
+    );
+
+
+    const playersContainer =
+        document.getElementById("players");
+
+    playersContainer.innerHTML = "";
+
+    players.forEach((player, index) => {
+
+        const div = document.createElement("div");
+
+        div.className = "player";
+
+        div.innerHTML = `
+            <div class="player-title">
+                <h3>Joueur ${index + 1}</h3>
+
+                <button class="remove"
+                    onclick="removePlayer(${index})">
+                    Supprimer
+                </button>
+            </div>
+
+            <div class="cards"></div>
+
+            <div class="hand"></div>
+        `;
+
+        playersContainer.appendChild(div);
+
+        const cardsDiv =
+            div.querySelector(".cards");
+
+        createCardButtons(
+            cardsDiv,
+            "player",
+            index
+        );
+
+        renderHand(
+            div.querySelector(".hand"),
+            player.cards
+        );
+
+    });
+
+}
+
+
+/*
+===========================================================
+AFFICHER UNE MAIN
+===========================================================
+*/
+
+function renderHand(container, cards) {
+
+    container.innerHTML = "";
+
+    if (cards.length === 0) {
+
+        container.innerHTML =
+            '<span class="empty">Aucune carte sélectionnée</span>';
+
+        return;
+    }
+
+    cards.forEach(card => {
+
+        const span =
+            document.createElement("span");
+
+        span.className = "mini-card";
+        span.textContent = card;
+
+        container.appendChild(span);
+
+    });
+
+}
+
+
+/*
+===========================================================
+CALCUL PRINCIPAL
+===========================================================
+*/
+
+function calculate() {
+
+    /*
+    Nombre total de cartes
+    */
+
+    let totalCards = 0;
+
+    Object.keys(deck).forEach(card => {
+        totalCards += deck[card];
+    });
+
+
+    /*
+    Nombre de cartes déjà connues
+    */
+
+    let knownCards = myCards.length;
+
+    players.forEach(player => {
+        knownCards += player.cards.length;
+    });
+
+
+    const remainingCards =
+        totalCards - knownCards;
+
+
+    document.getElementById("remaining")
+        .textContent = remainingCards;
+
+
+    /*
+    =======================================================
+    PROBABILITÉ DE BUST
+    =======================================================
+    */
+
+    let duplicateCards = 0;
+
+    myCards.forEach(card => {
+
+        if (typeof card === "number") {
+
+            duplicateCards +=
+                Math.max(0, deck[card] - countCardEverywhere(card));
+
+        }
+
+    });
+
+
+    /*
+    SECOND CHANCE
+    */
+
+    const hasSecondChance =
+        myCards.includes("Second Chance");
+
+
+    let bustProbability = 0;
+
+    if (!hasSecondChance && remainingCards > 0) {
+
+        bustProbability =
+            duplicateCards / remainingCards;
+
+    }
+
+
+    /*
+    =======================================================
+    SCORE ACTUEL
+    =======================================================
+    */
+
+    let currentScore = 0;
+
+    let hasMultiplier = false;
+
+    myCards.forEach(card => {
+
+        if (typeof card === "number") {
+
+            currentScore += card;
+
+        }
+
+        if (card === "+2") currentScore += 2;
+        if (card === "+4") currentScore += 4;
+        if (card === "+6") currentScore += 6;
+        if (card === "+8") currentScore += 8;
+        if (card === "+10") currentScore += 10;
+
+        if (card === "x2") {
+            hasMultiplier = true;
+        }
+
+    });
+
+
+    /*
+    Multiplicateur
+    */
+
+    if (hasMultiplier) {
+        currentScore *= 2;
+    }
+
+
+    /*
+    =======================================================
+    ESPÉRANCE DU PROCHAIN TIRAGE
+    =======================================================
+    */
+
+    let expectedGain = 0;
+
+    /*
+    Pour chaque carte encore dans le paquet,
+    on calcule son effet.
+    */
+
+    Object.keys(deck).forEach(cardKey => {
+
+        const originalCount =
+            deck[cardKey];
+
+        const alreadyKnown =
+            countCardEverywhere(
+                isNumeric(cardKey)
+                    ? Number(cardKey)
+                    : cardKey
+            );
+
+        const remaining =
+            Math.max(
+                0,
+                originalCount - alreadyKnown
+            );
+
+        if (remaining === 0) {
+            return;
+        }
+
+
+        /*
+        Probabilité de cette carte
+        */
+
+        const probability =
+            remaining / remainingCards;
+
+
+        /*
+        Si c'est une carte numérique
+        */
+
+        if (isNumeric(cardKey)) {
+
+            const value =
+                Number(cardKey);
+
+            /*
+            Carte doublon :
+            gain = 0 car bust.
+            */
+
+            if (myCards.includes(value)) {
+
+                return;
+
+            }
+
+
+            /*
+            Nouvelle carte numérique
+            */
+
+            let gain = value;
+
+
+            /*
+            Si elle donne le Flip 7
+            */
+
+            const uniqueNumbers =
+                myCards.filter(
+                    c => typeof c === "number"
+                ).length;
+
+
+            if (uniqueNumbers === 6) {
+
+                gain += 15;
+
+            }
+
+
+            expectedGain +=
+                probability * gain;
+
+        }
+
+
+        /*
+        Cartes bonus
+        */
+
+        else if (cardKey === "+2") {
+
+            expectedGain += probability * 2;
+
+        }
+
+        else if (cardKey === "+4") {
+
+            expectedGain += probability * 4;
+
+        }
+
+        else if (cardKey === "+6") {
+
+            expectedGain += probability * 6;
+
+        }
+
+        else if (cardKey === "+8") {
+
+            expectedGain += probability * 8;
+
+        }
+
+        else if (cardKey === "+10") {
+
+            expectedGain += probability * 10;
+
+        }
+
+
+        /*
+        Multiplicateur x2
+        */
+
+        else if (cardKey === "x2") {
+
+            expectedGain +=
+                probability * currentScore;
+
+        }
+
+
+        /*
+        Cartes Action
+        */
+
+        else {
+
+            /*
+            Pour la V1 elles ne donnent pas
+            directement de points.
+            */
+
+            expectedGain += 0;
+
+        }
+
+    });
+
+
+    /*
+    =======================================================
+    ESPÉRANCE DU SCORE FINAL APRÈS LE TIRAGE
+    =======================================================
+    */
+
+    let expectedScore = 0;
+
+    /*
+    Si bust :
+    score = 0
+
+    Sinon :
+    score actuel + gain
+    */
+
+    expectedScore =
+        (1 - bustProbability)
+        * (currentScore + expectedGain);
+
+
+    /*
+    =======================================================
+    AFFICHAGE
+    =======================================================
+    */
+
+    document.getElementById("bustProbability")
+        .textContent =
+        (bustProbability * 100)
+        .toFixed(2) + " %";
+
+
+    document.getElementById("expectedGain")
+        .textContent =
+        expectedGain.toFixed(2);
+
+
+    document.getElementById("currentScore")
+        .textContent =
+        currentScore.toFixed(0);
+
+
+    document.getElementById("expectedScore")
+        .textContent =
+        expectedScore.toFixed(2);
+
+
+    /*
+    =======================================================
+    EXPLICATION
+    =======================================================
+    */
+
+    let explanation = "";
+
+    if (myCards.length === 0) {
+
+        explanation =
+            "Sélectionne au moins une de tes cartes pour obtenir une analyse.";
+
+    } else {
+
+        explanation +=
+            "Il reste <strong>" +
+            remainingCards +
+            "</strong> cartes inconnues dans le paquet. ";
+
+        explanation +=
+            "Parmi elles, <strong>" +
+            duplicateCards +
+            "</strong> provoqueraient un doublon.";
+
+        if (hasSecondChance) {
+
+            explanation +=
+                "<br><br>🛡️ Tu possèdes une carte " +
+                "<strong>Second Chance</strong> : " +
+                "le prochain doublon ne te fait donc pas perdre.";
+
+        }
+
+        const uniqueNumbers =
+            myCards.filter(
+                c => typeof c === "number"
+            ).length;
+
+        if (uniqueNumbers === 6) {
+
+            explanation +=
+                "<br><br>🔥 Tu as actuellement " +
+                "<strong>6 nombres différents</strong>. " +
+                "Une nouvelle carte numérique différente " +
+                "déclenchera immédiatement le Flip 7 " +
+                "avec le bonus de 15 points.";
+
+        }
+
+    }
+
+
+    document.getElementById("explanation")
+        .innerHTML = explanation;
+
+}
+
+
+/*
+===========================================================
+UTILITAIRE
+===========================================================
+*/
+
+function isNumeric(value) {
+
+    return !isNaN(value) &&
+           value !== "" &&
+           value !== null;
+
+}
+
+
+/*
+===========================================================
+RESET
+===========================================================
+*/
+
+function resetGame() {
+
+    myCards = [];
+    players = [];
+    playerId = 0;
+
+    /*
+    On crée deux joueurs par défaut :
+    toi + deux adversaires potentiels.
+    */
+
+    addPlayer();
+    addPlayer();
+
+    calculate();
+
+}
+
+
+/*
+===========================================================
+INITIALISATION
+===========================================================
+*/
+
+addPlayer();
+addPlayer();
+
+render();
+calculate();
+
+</script>
+
 </body>
 </html>
