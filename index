@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mon application</title>
+</head>
+
+<body>
+    <h1>Bonjour !</h1>
+
+    <p id="message">Clique sur le bouton :</p>
+
+    <button onclick="direBonjour()">
+        Cliquez ici
+    </button>
+
+    <script>
+        function direBonjour() {
+            document.getElementById("message").innerText =
+                "Ça marche ! 🎉";
+        }
+    </script>
+</body>
+</html>
