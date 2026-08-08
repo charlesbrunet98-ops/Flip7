@@ -22,14 +22,10 @@
 
         color: #222;
 
-        background: #b8f5b8;
+        background: #82f082;
 
         transition: background 0.35s ease;
     }
-
-    /* =====================================================
-       ZONE CENTRALE BLANCHE
-    ===================================================== */
 
     .page {
         width: calc(100% - 80px);
@@ -46,20 +42,46 @@
     }
 
     /* =====================================================
+       BANDEAU
+    ===================================================== */
+
+    .top-banner {
+        width: 100%;
+
+        padding: 4px 8px;
+
+        margin-bottom: 10px;
+
+        background: #151515;
+
+        color: white;
+
+        text-align: center;
+
+        font-size: 10px;
+
+        font-weight: bold;
+
+        border-radius: 0 0 7px 7px;
+    }
+
+    /* =====================================================
        TITRE
     ===================================================== */
 
     h1 {
-        margin: 5px 0 18px;
+        margin: 5px 0 14px;
 
         text-align: center;
 
         font-size: 30px;
+
         font-weight: 900;
     }
 
     h2 {
         margin-top: 28px;
+
         margin-bottom: 7px;
 
         font-size: 22px;
@@ -67,17 +89,10 @@
 
     h3 {
         margin-top: 18px;
+
         margin-bottom: 8px;
 
         font-size: 18px;
-    }
-
-    .description {
-        margin-top: 0;
-
-        color: #666;
-
-        font-size: 14px;
     }
 
     /* =====================================================
@@ -87,11 +102,12 @@
     .analysis-top {
         display: grid;
 
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns:
+            repeat(5, 1fr);
 
         gap: 7px;
 
-        margin-bottom: 12px;
+        margin-bottom: 10px;
     }
 
     .stat {
@@ -104,7 +120,12 @@
         text-align: center;
 
         box-shadow:
-            0 2px 6px rgba(0, 0, 0, 0.10);
+            0 2px 6px rgba(
+                0,
+                0,
+                0,
+                0.10
+            );
     }
 
     .stat-title {
@@ -128,6 +149,34 @@
     }
 
     /* =====================================================
+       INDICATION RISQUE
+    ===================================================== */
+
+    .risk-message {
+        padding: 8px 12px;
+
+        margin-bottom: 12px;
+
+        background: #f7f7f7;
+
+        border-radius: 8px;
+
+        text-align: center;
+
+        font-size: 13px;
+
+        font-weight: 800;
+
+        box-shadow:
+            0 2px 5px rgba(
+                0,
+                0,
+                0,
+                0.08
+            );
+    }
+
+    /* =====================================================
        CARTES
     ===================================================== */
 
@@ -135,7 +184,10 @@
         display: grid;
 
         grid-template-columns:
-            repeat(auto-fill, minmax(58px, 1fr));
+            repeat(
+                auto-fill,
+                minmax(58px, 1fr)
+            );
 
         gap: 8px;
 
@@ -158,7 +210,12 @@
         cursor: pointer;
 
         box-shadow:
-            0 2px 6px rgba(0, 0, 0, 0.14);
+            0 2px 6px rgba(
+                0,
+                0,
+                0,
+                0.14
+            );
 
         transition:
             transform 0.12s ease,
@@ -170,7 +227,12 @@
         transform: translateY(-2px);
 
         box-shadow:
-            0 5px 10px rgba(0, 0, 0, 0.18);
+            0 5px 10px rgba(
+                0,
+                0,
+                0,
+                0.18
+            );
     }
 
     .card.selected {
@@ -180,7 +242,12 @@
 
         box-shadow:
             0 0 0 3px #ff5a1f,
-            0 5px 12px rgba(0, 0, 0, 0.18);
+            0 5px 12px rgba(
+                0,
+                0,
+                0,
+                0.18
+            );
     }
 
     .card.low {
@@ -219,11 +286,13 @@
 
     .hand-card {
         width: 48px;
+
         height: 60px;
 
         display: flex;
 
         align-items: center;
+
         justify-content: center;
 
         background: white;
@@ -235,7 +304,12 @@
         font-weight: 900;
 
         box-shadow:
-            0 2px 5px rgba(0, 0, 0, 0.14);
+            0 2px 5px rgba(
+                0,
+                0,
+                0,
+                0.14
+            );
     }
 
     .empty-hand {
@@ -258,13 +332,19 @@
         border-radius: 10px;
 
         box-shadow:
-            0 2px 7px rgba(0, 0, 0, 0.08);
+            0 2px 7px rgba(
+                0,
+                0,
+                0,
+                0.08
+            );
     }
 
     .player-header {
         display: flex;
 
         align-items: center;
+
         justify-content: space-between;
 
         margin-bottom: 8px;
@@ -294,7 +374,10 @@
         display: grid;
 
         grid-template-columns:
-            repeat(auto-fill, minmax(50px, 1fr));
+            repeat(
+                auto-fill,
+                minmax(50px, 1fr)
+            );
 
         gap: 6px;
     }
@@ -315,7 +398,12 @@
         cursor: pointer;
 
         box-shadow:
-            0 2px 5px rgba(0, 0, 0, 0.10);
+            0 2px 5px rgba(
+                0,
+                0,
+                0,
+                0.10
+            );
 
         transition:
             opacity 0.15s ease;
@@ -366,7 +454,12 @@
         cursor: pointer;
 
         box-shadow:
-            0 2px 6px rgba(0, 0, 0, 0.14);
+            0 2px 6px rgba(
+                0,
+                0,
+                0,
+                0.14
+            );
     }
 
     .main-button:hover {
@@ -460,6 +553,16 @@
 <div class="page">
 
 ```
+<!-- =====================================================
+     BANDEAU
+====================================================== -->
+
+<div class="top-banner">
+    Utilisation interdite aux gens qui sont pas
+    « bizarres » — genre Éléonore 😈
+</div>
+
+
 <!-- =====================================================
      TITRE
 ====================================================== -->
@@ -558,17 +661,24 @@
 
 
 <!-- =====================================================
+     INDICATION RISQUE
+====================================================== -->
+
+<div
+    class="risk-message"
+    id="riskMessage"
+>
+    🟢 Risque faible
+</div>
+
+
+<!-- =====================================================
      MES CARTES
 ====================================================== -->
 
 <h2>
     🃏 Mes cartes
 </h2>
-
-<p class="description">
-    Sélectionne les cartes présentes dans ta main.
-    Une même valeur ne peut être présente qu'une seule fois dans ta main.
-</p>
 
 
 <div
@@ -608,11 +718,6 @@
     👥 Cartes des autres joueurs
 </h2>
 
-<p class="description">
-    Sélectionne uniquement les cartes que tu connais.
-    Le nombre réel d'exemplaires du paquet est respecté.
-</p>
-
 
 <div id="players"></div>
 
@@ -630,7 +735,7 @@
 
 
 <!-- =====================================================
-     NOUVELLE ANALYSE
+     RESET
 ====================================================== -->
 
 <div class="actions">
@@ -656,16 +761,6 @@
     const NUMBER_CARDS = [];
 
 
-    /*
-        0  → 1
-        1  → 1
-        2  → 2
-        ...
-        12 → 12
-
-        Total = 79 cartes numériques.
-    */
-
     for (
         let value = 0;
         value <= 12;
@@ -679,78 +774,20 @@
 
 
         NUMBER_CARDS.push({
+
             value: value,
+
             count: count
+
         });
     }
-
-
-    /*
-        Cartes spéciales :
-
-        6 bonus
-        9 actions
-
-        Total spécial = 15.
-
-        79 + 15 = 94.
-    */
-
-    const SPECIAL_CARDS = [
-
-        {
-            name: "+2",
-            count: 1
-        },
-
-        {
-            name: "+4",
-            count: 1
-        },
-
-        {
-            name: "+6",
-            count: 1
-        },
-
-        {
-            name: "+8",
-            count: 1
-        },
-
-        {
-            name: "+10",
-            count: 1
-        },
-
-        {
-            name: "x2",
-            count: 1
-        },
-
-        {
-            name: "Freeze",
-            count: 3
-        },
-
-        {
-            name: "Flip Three",
-            count: 3
-        },
-
-        {
-            name: "Second Chance",
-            count: 3
-        }
-
-    ];
 
 
     const TOTAL_CARDS = 94;
 
 
     /* =====================================================
-       ÉTAT DU JEU
+       ÉTAT
     ===================================================== */
 
     let myHand = [];
@@ -761,7 +798,7 @@
 
 
     /* =====================================================
-       NOMBRE D'EXEMPLAIRES D'UNE VALEUR
+       NOMBRE D'EXEMPLAIRES
     ===================================================== */
 
     function getCardCount(value) {
@@ -773,17 +810,14 @@
             );
 
 
-        if (!card) {
-            return 0;
-        }
-
-
-        return card.count;
+        return card
+            ? card.count
+            : 0;
     }
 
 
     /* =====================================================
-       NOMBRE DÉJÀ CONNU
+       CARTES DÉJÀ CONNUES
     ===================================================== */
 
     function getKnownCount(value) {
@@ -818,7 +852,7 @@
 
 
     /* =====================================================
-       CARTE DISPONIBLE ?
+       DISPONIBILITÉ
     ===================================================== */
 
     function canSelectCard(value) {
@@ -918,7 +952,7 @@
 
 
     /* =====================================================
-       SÉLECTION MA MAIN
+       TOGGLE MA MAIN
     ===================================================== */
 
     function toggleMyCard(value) {
@@ -1033,7 +1067,7 @@
 
 
     /* =====================================================
-       AJOUT JOUEUR
+       JOUEURS
     ===================================================== */
 
     function addPlayer() {
@@ -1043,9 +1077,11 @@
 
         players.push({
 
-            id: playerCounter,
+            id:
+                playerCounter,
 
-            cards: []
+            cards:
+                []
 
         });
 
@@ -1055,10 +1091,6 @@
         updateAnalysis();
     }
 
-
-    /* =====================================================
-       SUPPRESSION JOUEUR
-    ===================================================== */
 
     function removePlayer(id) {
 
@@ -1074,10 +1106,6 @@
         updateAnalysis();
     }
 
-
-    /* =====================================================
-       CARTE JOUEUR
-    ===================================================== */
 
     function togglePlayerCard(
         playerId,
@@ -1322,7 +1350,7 @@
 
 
     /* =====================================================
-       CARTES CONNUES
+       TOTAL CARTES CONNUES
     ===================================================== */
 
     function getTotalKnownCards() {
@@ -1363,21 +1391,17 @@
                     );
 
 
-                const left =
-                    Math.max(
-                        0,
-                        card.count -
-                        known
-                    );
-
-
                 remaining.push({
 
                     value:
                         card.value,
 
                     count:
-                        left
+                        Math.max(
+                            0,
+                            card.count -
+                            known
+                        )
 
                 });
 
@@ -1390,7 +1414,7 @@
 
 
     /* =====================================================
-       PROBABILITÉ BUST
+       RISQUE DE BUST
     ===================================================== */
 
     function calculateBustProbability() {
@@ -1523,7 +1547,7 @@
 
 
     /* =====================================================
-       COULEUR DE LA BANDE EXTÉRIEURE
+       COULEUR DE LA BANDE
     ===================================================== */
 
     function updateRiskBackground(
@@ -1534,22 +1558,11 @@
             probability * 100;
 
 
-        /*
-            Transition volontairement rapide :
-
-            0 %   → vert
-            5 %   → vert clair
-            10 %  → jaune
-            20 %  → orange
-            30 %  → rouge
-            40 %+ → rouge vif
-        */
-
-
         const stops = [
 
             {
                 limit: 0,
+
                 color: [
                     130,
                     240,
@@ -1559,6 +1572,7 @@
 
             {
                 limit: 5,
+
                 color: [
                     190,
                     250,
@@ -1568,6 +1582,7 @@
 
             {
                 limit: 10,
+
                 color: [
                     255,
                     230,
@@ -1577,6 +1592,7 @@
 
             {
                 limit: 20,
+
                 color: [
                     255,
                     145,
@@ -1586,6 +1602,7 @@
 
             {
                 limit: 30,
+
                 color: [
                     255,
                     40,
@@ -1595,6 +1612,7 @@
 
             {
                 limit: 40,
+
                 color: [
                     255,
                     0,
@@ -1698,7 +1716,72 @@
 
 
     /* =====================================================
-       MISE À JOUR ANALYSE
+       MESSAGE RISQUE
+    ===================================================== */
+
+    function updateRiskMessage(
+        probability
+    ) {
+
+        const percentage =
+            probability * 100;
+
+
+        const message =
+            document.getElementById(
+                "riskMessage"
+            );
+
+
+        if (
+            myHand.length === 0
+        ) {
+
+            message.innerHTML =
+                "🟢 Sélectionne tes cartes pour analyser le risque.";
+
+            return;
+        }
+
+
+        if (
+            percentage < 10
+        ) {
+
+            message.innerHTML =
+                "🟢 Risque faible";
+
+        } else if (
+            percentage < 20
+        ) {
+
+            message.innerHTML =
+                "🟡 Risque modéré";
+
+        } else if (
+            percentage < 30
+        ) {
+
+            message.innerHTML =
+                "🟠 Risque important";
+
+        } else if (
+            percentage < 40
+        ) {
+
+            message.innerHTML =
+                "🔴 Risque élevé";
+
+        } else {
+
+            message.innerHTML =
+                "🚨 RISQUE TRÈS ÉLEVÉ";
+        }
+    }
+
+
+    /* =====================================================
+       ANALYSE
     ===================================================== */
 
     function updateAnalysis() {
@@ -1760,11 +1843,16 @@
         updateRiskBackground(
             bustProbability
         );
+
+
+        updateRiskMessage(
+            bustProbability
+        );
     }
 
 
     /* =====================================================
-       VIDER
+       VIDER MA MAIN
     ===================================================== */
 
     function clearSelection() {
@@ -1783,7 +1871,7 @@
 
 
     /* =====================================================
-       RESET
+       NOUVELLE ANALYSE
     ===================================================== */
 
     function resetGame() {
