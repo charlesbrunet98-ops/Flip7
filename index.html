@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,305 +16,361 @@
 
     body {
         margin: 0;
-        padding: 0 20px 50px;
+        padding: 0;
+
         font-family: Arial, Helvetica, sans-serif;
+
         color: #222;
-        background: #f2f2f2;
-        transition: background 0.5s ease;
+
+        background: #b8f5b8;
+
+        transition: background 0.35s ease;
     }
 
-    .container {
+    /* =====================================================
+       ZONE CENTRALE BLANCHE
+    ===================================================== */
+
+    .page {
+        width: calc(100% - 80px);
+
         max-width: 1100px;
+
         margin: 0 auto;
+
+        min-height: 100vh;
+
+        padding: 15px 25px 50px;
+
+        background: white;
     }
 
-    /* =========================
-       BANDEAU
-    ========================= */
-
-    .top-banner {
-        width: 100%;
-        padding: 5px 10px;
-        margin-bottom: 18px;
-
-        background: #171717;
-        color: white;
-
-        text-align: center;
-        font-size: 11px;
-        font-weight: bold;
-
-        border-radius: 0 0 8px 8px;
-    }
-
-    /* =========================
+    /* =====================================================
        TITRE
-    ========================= */
+    ===================================================== */
 
     h1 {
-        margin: 15px 0 25px;
+        margin: 5px 0 18px;
 
         text-align: center;
 
-        font-size: 34px;
+        font-size: 30px;
         font-weight: 900;
     }
 
     h2 {
-        margin-top: 35px;
-        margin-bottom: 8px;
+        margin-top: 28px;
+        margin-bottom: 7px;
 
-        font-size: 24px;
+        font-size: 22px;
     }
 
     h3 {
-        margin-top: 25px;
-        margin-bottom: 10px;
+        margin-top: 18px;
+        margin-bottom: 8px;
+
+        font-size: 18px;
     }
 
     .description {
         margin-top: 0;
+
         color: #666;
-    }
 
-    /* =========================
-       ANALYSE
-    ========================= */
-
-    .analysis-top {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 12px;
-
-        margin-bottom: 25px;
-    }
-
-    .stat {
-        padding: 15px 10px;
-
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 14px;
-
-        text-align: center;
-
-        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
-
-        transition: background 0.4s ease;
-    }
-
-    .stat-title {
-        font-size: 12px;
-        font-weight: 700;
-        color: #666;
-    }
-
-    .stat-value {
-        margin-top: 7px;
-
-        font-size: 24px;
-        font-weight: 900;
-    }
-
-    /* =========================
-       CARTES
-    ========================= */
-
-    .cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(65px, 1fr));
-        gap: 10px;
-
-        margin-top: 15px;
-    }
-
-    .card {
-        min-height: 90px;
-
-        border: none;
-        border-radius: 12px;
-
-        background: white;
-
-        font-size: 28px;
-        font-weight: 900;
-
-        cursor: pointer;
-
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-
-        transition:
-            transform 0.15s ease,
-            box-shadow 0.15s ease,
-            opacity 0.15s ease;
-    }
-
-    .card:hover {
-        transform: translateY(-3px);
-
-        box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18);
-    }
-
-    .card.selected {
-        transform: translateY(-3px);
-
-        background: #fff0e8;
-
-        box-shadow:
-            0 0 0 4px #ff5a1f,
-            0 8px 16px rgba(0, 0, 0, 0.2);
-    }
-
-    .card.low {
-        border-top: 6px solid #51a7ff;
-    }
-
-    .card.medium {
-        border-top: 6px solid #ffb000;
-    }
-
-    .card.high {
-        border-top: 6px solid #ff4b23;
-    }
-
-    /* =========================
-       MA MAIN
-    ========================= */
-
-    .hand {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-
-        min-height: 65px;
-        padding: 12px;
-
-        background: rgba(255, 255, 255, 0.6);
-
-        border: 1px dashed #aaa;
-        border-radius: 12px;
-    }
-
-    .hand-card {
-        width: 55px;
-        height: 70px;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        background: white;
-        border-radius: 9px;
-
-        font-size: 22px;
-        font-weight: 900;
-
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-    }
-
-    .empty-hand {
-        color: #999;
         font-size: 14px;
     }
 
-    /* =========================
-       JOUEURS
-    ========================= */
+    /* =====================================================
+       ANALYSE
+    ===================================================== */
 
-    .player {
-        margin-top: 20px;
-        padding: 15px;
+    .analysis-top {
+        display: grid;
 
-        background: rgba(255, 255, 255, 0.85);
-        border-radius: 14px;
+        grid-template-columns: repeat(5, 1fr);
 
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        gap: 7px;
+
+        margin-bottom: 12px;
     }
 
-    .player-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+    .stat {
+        padding: 8px 5px;
 
-        margin-bottom: 10px;
+        background: #f7f7f7;
+
+        border-radius: 9px;
+
+        text-align: center;
+
+        box-shadow:
+            0 2px 6px rgba(0, 0, 0, 0.10);
     }
 
-    .player-title {
+    .stat-title {
+        font-size: 9px;
+
+        line-height: 1.1;
+
+        color: #666;
+
+        font-weight: 700;
+    }
+
+    .stat-value {
+        margin-top: 3px;
+
         font-size: 18px;
+
+        line-height: 1;
+
         font-weight: 900;
     }
 
-    .player-remove {
-        padding: 6px 10px;
+    /* =====================================================
+       CARTES
+    ===================================================== */
 
-        border: none;
-        border-radius: 8px;
-
-        background: #eee;
-
-        cursor: pointer;
-    }
-
-    .player-cards {
+    .cards {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(55px, 1fr));
+
+        grid-template-columns:
+            repeat(auto-fill, minmax(58px, 1fr));
+
         gap: 8px;
+
+        margin-top: 12px;
     }
 
-    .player-card {
-        min-height: 65px;
+    .card {
+        min-height: 76px;
 
         border: none;
+
         border-radius: 10px;
 
         background: white;
 
-        font-size: 22px;
+        font-size: 25px;
+
         font-weight: 900;
 
         cursor: pointer;
 
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+        box-shadow:
+            0 2px 6px rgba(0, 0, 0, 0.14);
+
+        transition:
+            transform 0.12s ease,
+            box-shadow 0.12s ease,
+            opacity 0.12s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-2px);
+
+        box-shadow:
+            0 5px 10px rgba(0, 0, 0, 0.18);
+    }
+
+    .card.selected {
+        transform: translateY(-2px);
+
+        background: #fff0e8;
+
+        box-shadow:
+            0 0 0 3px #ff5a1f,
+            0 5px 12px rgba(0, 0, 0, 0.18);
+    }
+
+    .card.low {
+        border-top: 5px solid #4da3ff;
+    }
+
+    .card.medium {
+        border-top: 5px solid #ffb000;
+    }
+
+    .card.high {
+        border-top: 5px solid #ff4325;
+    }
+
+    /* =====================================================
+       MAIN
+    ===================================================== */
+
+    .hand {
+        display: flex;
+
+        flex-wrap: wrap;
+
+        gap: 8px;
+
+        min-height: 60px;
+
+        padding: 10px;
+
+        background: #fafafa;
+
+        border: 1px dashed #999;
+
+        border-radius: 10px;
+    }
+
+    .hand-card {
+        width: 48px;
+        height: 60px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        background: white;
+
+        border-radius: 8px;
+
+        font-size: 20px;
+
+        font-weight: 900;
+
+        box-shadow:
+            0 2px 5px rgba(0, 0, 0, 0.14);
+    }
+
+    .empty-hand {
+        color: #888;
+
+        font-size: 13px;
+    }
+
+    /* =====================================================
+       JOUEURS
+    ===================================================== */
+
+    .player {
+        margin-top: 14px;
+
+        padding: 11px;
+
+        background: #fafafa;
+
+        border-radius: 10px;
+
+        box-shadow:
+            0 2px 7px rgba(0, 0, 0, 0.08);
+    }
+
+    .player-header {
+        display: flex;
+
+        align-items: center;
+        justify-content: space-between;
+
+        margin-bottom: 8px;
+    }
+
+    .player-title {
+        font-size: 16px;
+
+        font-weight: 900;
+    }
+
+    .player-remove {
+        padding: 5px 8px;
+
+        border: none;
+
+        border-radius: 7px;
+
+        background: #eee;
+
+        cursor: pointer;
+
+        font-size: 11px;
+    }
+
+    .player-cards {
+        display: grid;
+
+        grid-template-columns:
+            repeat(auto-fill, minmax(50px, 1fr));
+
+        gap: 6px;
+    }
+
+    .player-card {
+        min-height: 55px;
+
+        border: none;
+
+        border-radius: 8px;
+
+        background: white;
+
+        font-size: 19px;
+
+        font-weight: 900;
+
+        cursor: pointer;
+
+        box-shadow:
+            0 2px 5px rgba(0, 0, 0, 0.10);
+
+        transition:
+            opacity 0.15s ease;
     }
 
     .player-card.selected {
         background: #ffe9df;
 
-        box-shadow: 0 0 0 3px #ff5a1f;
+        box-shadow:
+            0 0 0 2px #ff5a1f;
     }
 
-    /* =========================
+    .player-card.disabled {
+        opacity: 0.22;
+
+        cursor: not-allowed;
+    }
+
+    /* =====================================================
        BOUTONS
-    ========================= */
+    ===================================================== */
 
     .actions {
         display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
 
-        margin-top: 15px;
+        flex-wrap: wrap;
+
+        gap: 8px;
+
+        margin-top: 10px;
     }
 
     .main-button {
-        padding: 12px 18px;
+        padding: 10px 15px;
 
         border: none;
-        border-radius: 10px;
+
+        border-radius: 8px;
 
         background: #ff5a1f;
+
         color: white;
 
-        font-size: 14px;
+        font-size: 13px;
+
         font-weight: 800;
 
         cursor: pointer;
 
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-
-        transition: transform 0.15s ease;
+        box-shadow:
+            0 2px 6px rgba(0, 0, 0, 0.14);
     }
 
     .main-button:hover {
-        transform: translateY(-2px);
+        transform: translateY(-1px);
     }
 
     .secondary-button {
@@ -324,52 +381,73 @@
         background: #777;
     }
 
-    /* =========================
-       EXPLICATION
-    ========================= */
+    /* =====================================================
+       MOBILE
+    ===================================================== */
 
-    .info {
-        margin-top: 15px;
-        padding: 18px;
+    @media (max-width: 750px) {
 
-        background: rgba(255, 255, 255, 0.88);
-        border-radius: 14px;
+        .page {
+            width: calc(100% - 30px);
 
-        line-height: 1.6;
+            padding:
+                12px 15px 35px;
+        }
 
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-    }
-
-    /* =========================
-       RESPONSIVE
-    ========================= */
-
-    @media (max-width: 850px) {
         .analysis-top {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns:
+                repeat(5, 1fr);
         }
 
-        .analysis-top .stat:last-child {
-            grid-column: span 2;
+        .stat-title {
+            font-size: 8px;
+        }
+
+        .stat-value {
+            font-size: 16px;
         }
     }
 
-    @media (max-width: 500px) {
-        body {
-            padding: 0 10px 30px;
+    @media (max-width: 550px) {
+
+        .page {
+            width: calc(100% - 16px);
+
+            padding:
+                10px 10px 30px;
         }
 
         h1 {
-            font-size: 27px;
+            font-size: 25px;
+        }
+
+        .analysis-top {
+            gap: 4px;
+        }
+
+        .stat {
+            padding: 7px 2px;
+        }
+
+        .stat-title {
+            font-size: 7px;
+        }
+
+        .stat-value {
+            font-size: 14px;
         }
 
         .cards {
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns:
+                repeat(7, 1fr);
+
+            gap: 5px;
         }
 
         .card {
-            min-height: 65px;
-            font-size: 23px;
+            min-height: 58px;
+
+            font-size: 20px;
         }
     }
 </style>
@@ -379,34 +457,28 @@
 
 <body>
 
-<div class="container">
+<div class="page">
 
 ```
-<!-- =========================
-     BANDEAU
-========================== -->
-
-<div class="top-banner">
-    Utilisation interdite aux gens qui sont pas « bizarres » — genre Éléonore 😈
-</div>
-
-<!-- =========================
+<!-- =====================================================
      TITRE
-========================== -->
+====================================================== -->
 
 <h1>
     🃏 ANALYSE FLIP 7
 </h1>
 
-<!-- =========================
+
+<!-- =====================================================
      STATISTIQUES
-========================== -->
+====================================================== -->
 
 <div class="analysis-top">
 
     <div class="stat">
+
         <div class="stat-title">
-            🃏 Cartes restantes
+            🃏 RESTANTES
         </div>
 
         <div
@@ -415,11 +487,14 @@
         >
             94
         </div>
+
     </div>
 
+
     <div class="stat">
+
         <div class="stat-title">
-            💥 Bust prochain tirage
+            💥 BUST
         </div>
 
         <div
@@ -428,11 +503,14 @@
         >
             0 %
         </div>
+
     </div>
 
+
     <div class="stat">
+
         <div class="stat-title">
-            🎯 Espérance tirage
+            🎯 ESP. TIRAGE
         </div>
 
         <div
@@ -441,11 +519,14 @@
         >
             0
         </div>
+
     </div>
 
+
     <div class="stat">
+
         <div class="stat-title">
-            📈 Score actuel
+            📈 SCORE
         </div>
 
         <div
@@ -454,11 +535,14 @@
         >
             0
         </div>
+
     </div>
 
+
     <div class="stat">
+
         <div class="stat-title">
-            🎯 Score espéré
+            🎯 SCORE ESP.
         </div>
 
         <div
@@ -467,13 +551,15 @@
         >
             0
         </div>
+
     </div>
 
 </div>
 
-<!-- =========================
+
+<!-- =====================================================
      MES CARTES
-========================== -->
+====================================================== -->
 
 <h2>
     🃏 Mes cartes
@@ -481,22 +567,26 @@
 
 <p class="description">
     Sélectionne les cartes présentes dans ta main.
-    Une seule occurrence de chaque valeur est possible.
+    Une même valeur ne peut être présente qu'une seule fois dans ta main.
 </p>
+
 
 <div
     id="myCards"
     class="cards"
 ></div>
 
+
 <h3>
     Ma main
 </h3>
+
 
 <div
     id="myHand"
     class="hand"
 ></div>
+
 
 <div class="actions">
 
@@ -504,14 +594,15 @@
         class="main-button clear-button"
         onclick="clearSelection()"
     >
-        🗑️ Vider la sélection
+        🗑️ Vider ma main
     </button>
 
 </div>
 
-<!-- =========================
+
+<!-- =====================================================
      AUTRES JOUEURS
-========================== -->
+====================================================== -->
 
 <h2>
     👥 Cartes des autres joueurs
@@ -519,10 +610,12 @@
 
 <p class="description">
     Sélectionne uniquement les cartes que tu connais.
-    Un joueur peut rester totalement vide.
+    Le nombre réel d'exemplaires du paquet est respecté.
 </p>
 
+
 <div id="players"></div>
+
 
 <div class="actions">
 
@@ -535,20 +628,10 @@
 
 </div>
 
-<!-- =========================
-     ANALYSE
-========================== -->
 
-<h2>
-    💡 Analyse
-</h2>
-
-<div
-    class="info"
-    id="explanation"
->
-    Sélectionne tes cartes pour commencer.
-</div>
+<!-- =====================================================
+     NOUVELLE ANALYSE
+====================================================== -->
 
 <div class="actions">
 
@@ -572,20 +655,28 @@
 
     const NUMBER_CARDS = [];
 
-    /*
-        0 : 1 carte
-        1 : 1 carte
-        2 : 2 cartes
-        ...
-        12 : 12 cartes
 
-        Total des cartes numériques :
-        1 + 1 + 2 + ... + 12 = 79
+    /*
+        0  → 1
+        1  → 1
+        2  → 2
+        ...
+        12 → 12
+
+        Total = 79 cartes numériques.
     */
 
-    for (let value = 0; value <= 12; value++) {
+    for (
+        let value = 0;
+        value <= 12;
+        value++
+    ) {
 
-        const count = value === 0 ? 1 : value;
+        const count =
+            value === 0
+                ? 1
+                : value;
+
 
         NUMBER_CARDS.push({
             value: value,
@@ -595,58 +686,65 @@
 
 
     /*
-        Cartes spéciales.
+        Cartes spéciales :
 
-        Elles sont prises en compte dans le nombre
-        de cartes restantes, mais ne provoquent
-        pas directement de bust.
+        6 bonus
+        9 actions
+
+        Total spécial = 15.
+
+        79 + 15 = 94.
     */
 
     const SPECIAL_CARDS = [
-        {
-            name: "Freeze",
-            count: 3
-        },
-        {
-            name: "Flip Three",
-            count: 3
-        },
-        {
-            name: "Second Chance",
-            count: 3
-        },
+
         {
             name: "+2",
             count: 1
         },
+
         {
             name: "+4",
             count: 1
         },
+
         {
             name: "+6",
             count: 1
         },
+
         {
             name: "+8",
             count: 1
         },
+
         {
             name: "+10",
             count: 1
         },
+
         {
             name: "x2",
             count: 1
+        },
+
+        {
+            name: "Freeze",
+            count: 3
+        },
+
+        {
+            name: "Flip Three",
+            count: 3
+        },
+
+        {
+            name: "Second Chance",
+            count: 3
         }
+
     ];
 
-
-    /*
-        79 cartes numériques
-        \+ 15 cartes spéciales
-        = 94 cartes
-    */
 
     const TOTAL_CARDS = 94;
 
@@ -663,68 +761,164 @@
 
 
     /* =====================================================
-       AFFICHAGE DE MES CARTES
+       NOMBRE D'EXEMPLAIRES D'UNE VALEUR
+    ===================================================== */
+
+    function getCardCount(value) {
+
+        const card =
+            NUMBER_CARDS.find(
+                card =>
+                    card.value === value
+            );
+
+
+        if (!card) {
+            return 0;
+        }
+
+
+        return card.count;
+    }
+
+
+    /* =====================================================
+       NOMBRE DÉJÀ CONNU
+    ===================================================== */
+
+    function getKnownCount(value) {
+
+        let count = 0;
+
+
+        if (
+            myHand.includes(value)
+        ) {
+
+            count++;
+        }
+
+
+        players.forEach(
+            player => {
+
+                if (
+                    player.cards.includes(value)
+                ) {
+
+                    count++;
+                }
+
+            }
+        );
+
+
+        return count;
+    }
+
+
+    /* =====================================================
+       CARTE DISPONIBLE ?
+    ===================================================== */
+
+    function canSelectCard(value) {
+
+        return (
+            getKnownCount(value) <
+            getCardCount(value)
+        );
+    }
+
+
+    /* =====================================================
+       MES CARTES
     ===================================================== */
 
     function renderMyCards() {
 
         const container =
-            document.getElementById("myCards");
+            document.getElementById(
+                "myCards"
+            );
+
 
         container.innerHTML = "";
 
 
-        NUMBER_CARDS.forEach(card => {
+        NUMBER_CARDS.forEach(
+            card => {
 
-            const button =
-                document.createElement("button");
+                const button =
+                    document.createElement(
+                        "button"
+                    );
 
-            button.className = "card";
+
+                button.className =
+                    "card";
 
 
-            if (card.value <= 3) {
+                if (
+                    card.value <= 3
+                ) {
 
-                button.classList.add("low");
+                    button.classList.add(
+                        "low"
+                    );
 
-            } else if (card.value <= 7) {
+                } else if (
+                    card.value <= 7
+                ) {
 
-                button.classList.add("medium");
+                    button.classList.add(
+                        "medium"
+                    );
 
-            } else {
+                } else {
 
-                button.classList.add("high");
+                    button.classList.add(
+                        "high"
+                    );
+                }
+
+
+                button.textContent =
+                    card.value;
+
+
+                if (
+                    myHand.includes(
+                        card.value
+                    )
+                ) {
+
+                    button.classList.add(
+                        "selected"
+                    );
+                }
+
+
+                button.onclick =
+                    function () {
+
+                        toggleMyCard(
+                            card.value
+                        );
+
+                    };
+
+
+                container.appendChild(
+                    button
+                );
+
             }
-
-
-            button.textContent = card.value;
-
-
-            if (myHand.includes(card.value)) {
-
-                button.classList.add("selected");
-            }
-
-
-            /*
-                Une valeur ne peut être sélectionnée
-                qu'une seule fois dans ma main.
-            */
-
-            button.onclick = function () {
-
-                toggleMyCard(card.value);
-
-            };
-
-
-            container.appendChild(button);
-
-        });
+        );
     }
 
 
     /* =====================================================
-       SÉLECTION DE MES CARTES
+       SÉLECTION MA MAIN
     ===================================================== */
 
     function toggleMyCard(value) {
@@ -735,79 +929,111 @@
 
         if (index !== -1) {
 
-            /*
-                La carte est déjà sélectionnée :
-                on la retire.
-            */
-
-            myHand.splice(index, 1);
+            myHand.splice(
+                index,
+                1
+            );
 
         } else {
 
-            /*
-                La carte n'est pas sélectionnée :
-                on l'ajoute une seule fois.
-            */
+            if (
+                !canSelectCard(value)
+            ) {
+
+                return;
+            }
+
 
             myHand.push(value);
         }
 
 
-        myHand.sort((a, b) => a - b);
+        myHand.sort(
+            (a, b) =>
+                a - b
+        );
 
 
         renderMyCards();
 
         renderMyHand();
 
+        renderPlayers();
+
         updateAnalysis();
     }
 
 
     /* =====================================================
-       AFFICHAGE DE MA MAIN
+       AFFICHAGE MAIN
     ===================================================== */
 
     function renderMyHand() {
 
         const container =
-            document.getElementById("myHand");
+            document.getElementById(
+                "myHand"
+            );
+
 
         container.innerHTML = "";
 
 
-        if (myHand.length === 0) {
+        if (
+            myHand.length === 0
+        ) {
 
             const empty =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
-            empty.className = "empty-hand";
+
+            empty.className =
+                "empty-hand";
+
 
             empty.textContent =
                 "Aucune carte sélectionnée.";
 
-            container.appendChild(empty);
+
+            container.appendChild(
+                empty
+            );
+
 
             return;
         }
 
 
-        myHand.forEach(value => {
+        myHand.forEach(
+            value => {
 
-            const card =
-                document.createElement("div");
+                const card =
+                    document.createElement(
+                        "div"
+                    );
 
-            card.className = "hand-card";
 
-            card.textContent = value;
+                card.className =
+                    "hand-card";
 
-            container.appendChild(card);
-        });
+
+                card.textContent =
+                    value;
+
+
+                container.appendChild(
+                    card
+                );
+
+            }
+        );
     }
 
 
     /* =====================================================
-       AJOUT D'UN JOUEUR
+       AJOUT JOUEUR
     ===================================================== */
 
     function addPlayer() {
@@ -816,8 +1042,11 @@
 
 
         players.push({
+
             id: playerCounter,
+
             cards: []
+
         });
 
 
@@ -828,14 +1057,15 @@
 
 
     /* =====================================================
-       SUPPRESSION D'UN JOUEUR
+       SUPPRESSION JOUEUR
     ===================================================== */
 
     function removePlayer(id) {
 
         players =
             players.filter(
-                player => player.id !== id
+                player =>
+                    player.id !== id
             );
 
 
@@ -846,14 +1076,18 @@
 
 
     /* =====================================================
-       SÉLECTION DES CARTES D'UN JOUEUR
+       CARTE JOUEUR
     ===================================================== */
 
-    function togglePlayerCard(playerId, value) {
+    function togglePlayerCard(
+        playerId,
+        value
+    ) {
 
         const player =
             players.find(
-                player => player.id === playerId
+                player =>
+                    player.id === playerId
             );
 
 
@@ -868,129 +1102,222 @@
 
         if (index !== -1) {
 
-            player.cards.splice(index, 1);
+            player.cards.splice(
+                index,
+                1
+            );
 
         } else {
 
-            /*
-                Une seule occurrence d'une valeur
-                dans la main d'un joueur.
-            */
+            if (
+                !canSelectCard(value)
+            ) {
+
+                return;
+            }
+
 
             player.cards.push(value);
         }
 
 
-        player.cards.sort((a, b) => a - b);
+        player.cards.sort(
+            (a, b) =>
+                a - b
+        );
 
 
         renderPlayers();
+
+        renderMyCards();
 
         updateAnalysis();
     }
 
 
     /* =====================================================
-       AFFICHAGE DES JOUEURS
+       AFFICHAGE JOUEURS
     ===================================================== */
 
     function renderPlayers() {
 
         const container =
-            document.getElementById("players");
+            document.getElementById(
+                "players"
+            );
+
 
         container.innerHTML = "";
 
 
-        players.forEach(player => {
+        players.forEach(
+            player => {
 
-            const wrapper =
-                document.createElement("div");
-
-            wrapper.className = "player";
-
-
-            const header =
-                document.createElement("div");
-
-            header.className = "player-header";
-
-
-            const title =
-                document.createElement("div");
-
-            title.className = "player-title";
-
-            title.textContent =
-                "Joueur " + player.id;
-
-
-            const remove =
-                document.createElement("button");
-
-            remove.className = "player-remove";
-
-            remove.textContent =
-                "🗑️ Supprimer";
-
-            remove.onclick = function () {
-
-                removePlayer(player.id);
-
-            };
-
-
-            header.appendChild(title);
-
-            header.appendChild(remove);
-
-
-            const cards =
-                document.createElement("div");
-
-            cards.className = "player-cards";
-
-
-            NUMBER_CARDS.forEach(card => {
-
-                const button =
-                    document.createElement("button");
-
-                button.className =
-                    "player-card";
-
-                button.textContent =
-                    card.value;
-
-
-                if (
-                    player.cards.includes(card.value)
-                ) {
-
-                    button.classList.add("selected");
-                }
-
-
-                button.onclick = function () {
-
-                    togglePlayerCard(
-                        player.id,
-                        card.value
+                const wrapper =
+                    document.createElement(
+                        "div"
                     );
 
-                };
+
+                wrapper.className =
+                    "player";
 
 
-                cards.appendChild(button);
-            });
+                const header =
+                    document.createElement(
+                        "div"
+                    );
 
 
-            wrapper.appendChild(header);
+                header.className =
+                    "player-header";
 
-            wrapper.appendChild(cards);
 
-            container.appendChild(wrapper);
-        });
+                const title =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                title.className =
+                    "player-title";
+
+
+                title.textContent =
+                    "Joueur " +
+                    player.id;
+
+
+                const remove =
+                    document.createElement(
+                        "button"
+                    );
+
+
+                remove.className =
+                    "player-remove";
+
+
+                remove.textContent =
+                    "🗑️ Supprimer";
+
+
+                remove.onclick =
+                    function () {
+
+                        removePlayer(
+                            player.id
+                        );
+
+                    };
+
+
+                header.appendChild(
+                    title
+                );
+
+
+                header.appendChild(
+                    remove
+                );
+
+
+                const cards =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                cards.className =
+                    "player-cards";
+
+
+                NUMBER_CARDS.forEach(
+                    card => {
+
+                        const button =
+                            document.createElement(
+                                "button"
+                            );
+
+
+                        button.className =
+                            "player-card";
+
+
+                        button.textContent =
+                            card.value;
+
+
+                        const selected =
+                            player.cards.includes(
+                                card.value
+                            );
+
+
+                        const available =
+                            canSelectCard(
+                                card.value
+                            );
+
+
+                        if (selected) {
+
+                            button.classList.add(
+                                "selected"
+                            );
+                        }
+
+
+                        if (
+                            !available &&
+                            !selected
+                        ) {
+
+                            button.classList.add(
+                                "disabled"
+                            );
+
+                            button.disabled =
+                                true;
+                        }
+
+
+                        button.onclick =
+                            function () {
+
+                                togglePlayerCard(
+                                    player.id,
+                                    card.value
+                                );
+
+                            };
+
+
+                        cards.appendChild(
+                            button
+                        );
+
+                    }
+                );
+
+
+                wrapper.appendChild(
+                    header
+                );
+
+
+                wrapper.appendChild(
+                    cards
+                );
+
+
+                container.appendChild(
+                    wrapper
+                );
+
+            }
+        );
     }
 
 
@@ -998,99 +1325,20 @@
        CARTES CONNUES
     ===================================================== */
 
-    function getKnownCardCounts() {
-
-        const known = {};
-
-
-        /*
-            Mes cartes
-        */
-
-        myHand.forEach(value => {
-
-            if (!known[value]) {
-                known[value] = 0;
-            }
-
-            known[value]++;
-        });
-
-
-        /*
-            Cartes des autres joueurs
-        */
-
-        players.forEach(player => {
-
-            player.cards.forEach(value => {
-
-                if (!known[value]) {
-                    known[value] = 0;
-                }
-
-                known[value]++;
-            });
-        });
-
-
-        return known;
-    }
-
-
-    /* =====================================================
-       CARTES NUMÉRIQUES RESTANTES
-    ===================================================== */
-
-    function getRemainingNumberCards() {
-
-        const known =
-            getKnownCardCounts();
-
-        const remaining = [];
-
-
-        NUMBER_CARDS.forEach(card => {
-
-            const alreadyKnown =
-                known[card.value] || 0;
-
-
-            const left =
-                Math.max(
-                    0,
-                    card.count - alreadyKnown
-                );
-
-
-            remaining.push({
-                value: card.value,
-                count: left
-            });
-        });
-
-
-        return remaining;
-    }
-
-
-    /* =====================================================
-       NOMBRE TOTAL DE CARTES CONNUES
-    ===================================================== */
-
     function getTotalKnownCards() {
 
-        let total = 0;
+        let total =
+            myHand.length;
 
 
-        total += myHand.length;
+        players.forEach(
+            player => {
 
+                total +=
+                    player.cards.length;
 
-        players.forEach(player => {
-
-            total += player.cards.length;
-
-        });
+            }
+        );
 
 
         return total;
@@ -1098,20 +1346,67 @@
 
 
     /* =====================================================
-       PROBABILITÉ DE BUST
+       CARTES RESTANTES
+    ===================================================== */
+
+    function getRemainingNumberCards() {
+
+        const remaining = [];
+
+
+        NUMBER_CARDS.forEach(
+            card => {
+
+                const known =
+                    getKnownCount(
+                        card.value
+                    );
+
+
+                const left =
+                    Math.max(
+                        0,
+                        card.count -
+                        known
+                    );
+
+
+                remaining.push({
+
+                    value:
+                        card.value,
+
+                    count:
+                        left
+
+                });
+
+            }
+        );
+
+
+        return remaining;
+    }
+
+
+    /* =====================================================
+       PROBABILITÉ BUST
     ===================================================== */
 
     function calculateBustProbability() {
 
-        const remainingNumberCards =
+        const remaining =
             getRemainingNumberCards();
 
 
-        const remainingTotal =
-            TOTAL_CARDS - getTotalKnownCards();
+        const totalRemaining =
+            TOTAL_CARDS -
+            getTotalKnownCards();
 
 
-        if (remainingTotal <= 0) {
+        if (
+            totalRemaining <= 0
+        ) {
 
             return 0;
         }
@@ -1120,280 +1415,290 @@
         let dangerousCards = 0;
 
 
-        /*
-            Une carte est dangereuse si sa valeur
-            existe déjà dans ma main.
+        myHand.forEach(
+            value => {
 
-            Exemple :
-
-            J'ai un 12.
-
-            Il existe 12 cartes "12" au départ.
-
-            Si aucune autre carte 12 n'est connue,
-            les 11 autres 12 provoquent un bust.
-        */
-
-        myHand.forEach(value => {
-
-            const card =
-                remainingNumberCards.find(
-                    card => card.value === value
-                );
+                const card =
+                    remaining.find(
+                        card =>
+                            card.value === value
+                    );
 
 
-            if (card) {
+                if (card) {
 
-                dangerousCards += card.count;
+                    dangerousCards +=
+                        card.count;
+                }
+
             }
-        });
+        );
 
 
-        return dangerousCards / remainingTotal;
+        return (
+            dangerousCards /
+            totalRemaining
+        );
     }
 
 
     /* =====================================================
-       ESPÉRANCE DU PROCHAIN TIRAGE
+       ESPÉRANCE
     ===================================================== */
 
     function calculateExpectedGain() {
 
-        const remainingNumberCards =
+        const remaining =
             getRemainingNumberCards();
 
 
-        const remainingTotal =
-            TOTAL_CARDS - getTotalKnownCards();
+        const totalRemaining =
+            TOTAL_CARDS -
+            getTotalKnownCards();
 
 
-        if (remainingTotal <= 0) {
+        if (
+            totalRemaining <= 0
+        ) {
 
             return 0;
         }
 
 
-        let expectedGain = 0;
+        let totalPoints = 0;
 
 
-        remainingNumberCards.forEach(card => {
+        remaining.forEach(
+            card => {
 
-            /*
-                Si la valeur est déjà dans ma main,
-                cette carte provoque un bust.
+                if (
+                    myHand.includes(
+                        card.value
+                    )
+                ) {
 
-                On considère donc qu'elle rapporte 0.
-            */
+                    return;
+                }
 
-            if (myHand.includes(card.value)) {
 
-                return;
+                totalPoints +=
+                    card.value *
+                    card.count;
+
             }
+        );
 
 
-            expectedGain +=
-                card.value * card.count;
-        });
-
-
-        return expectedGain / remainingTotal;
+        return (
+            totalPoints /
+            totalRemaining
+        );
     }
 
 
     /* =====================================================
-       SCORE ACTUEL
+       SCORE
     ===================================================== */
 
     function calculateCurrentScore() {
 
-        let score = 0;
-
-
-        myHand.forEach(value => {
-
-            score += value;
-        });
-
-
-        return score;
+        return myHand.reduce(
+            (
+                total,
+                value
+            ) =>
+                total + value,
+            0
+        );
     }
 
-
-    /* =====================================================
-       SCORE ESPÉRÉ
-    ===================================================== */
 
     function calculateExpectedScore() {
 
-        const currentScore =
-            calculateCurrentScore();
-
-
-        const expectedGain =
-            calculateExpectedGain();
-
-
-        return currentScore + expectedGain;
+        return (
+            calculateCurrentScore() +
+            calculateExpectedGain()
+        );
     }
 
 
     /* =====================================================
-       COULEUR DU FOND SELON LE RISQUE
+       COULEUR DE LA BANDE EXTÉRIEURE
     ===================================================== */
 
-    function updateRiskBackground(probability) {
+    function updateRiskBackground(
+        probability
+    ) {
 
         const percentage =
             probability * 100;
 
 
         /*
-            0 % :
-            fond quasiment normal.
+            Transition volontairement rapide :
 
-            20 % :
-            légère coloration.
-
-            40 % :
-            orange.
-
-            60 % :
-            rouge.
-
-            80 % et plus :
-            rouge vif.
+            0 %   → vert
+            5 %   → vert clair
+            10 %  → jaune
+            20 %  → orange
+            30 %  → rouge
+            40 %+ → rouge vif
         */
 
-        const intensity =
-            Math.min(
-                1,
-                Math.max(
+
+        const stops = [
+
+            {
+                limit: 0,
+                color: [
+                    130,
+                    240,
+                    130
+                ]
+            },
+
+            {
+                limit: 5,
+                color: [
+                    190,
+                    250,
+                    90
+                ]
+            },
+
+            {
+                limit: 10,
+                color: [
+                    255,
+                    230,
+                    50
+                ]
+            },
+
+            {
+                limit: 20,
+                color: [
+                    255,
+                    145,
+                    30
+                ]
+            },
+
+            {
+                limit: 30,
+                color: [
+                    255,
+                    40,
+                    20
+                ]
+            },
+
+            {
+                limit: 40,
+                color: [
+                    255,
                     0,
-                    (percentage - 5) / 75
-                )
-            );
+                    0
+                ]
+            }
+
+        ];
 
 
-        const red = 255;
+        let color;
 
 
-        const green =
-            Math.round(
-                255 - intensity * 230
-            );
+        if (
+            percentage >= 40
+        ) {
 
-
-        const blue =
-            Math.round(
-                255 - intensity * 230
-            );
-
-
-        const color =
-            `rgb(${red}, ${green}, ${blue})`;
-
-
-        document.body.style.background =
-            `radial-gradient(
-                circle at top,
-                #ffffff 0%,
-                ${color} 100%
-            )`;
-    }
-
-
-    /* =====================================================
-       TEXTE D'ANALYSE
-    ===================================================== */
-
-    function updateExplanation(
-        probability,
-        expectedGain,
-        currentScore
-    ) {
-
-        const box =
-            document.getElementById("explanation");
-
-
-        if (myHand.length === 0) {
-
-            box.innerHTML =
-                "Sélectionne tes cartes pour commencer.";
-
-            return;
-        }
-
-
-        const percentage =
-            probability * 100;
-
-
-        let riskText;
-
-
-        if (percentage < 10) {
-
-            riskText =
-                "🟢 Risque faible";
-
-        } else if (percentage < 25) {
-
-            riskText =
-                "🟡 Risque modéré";
-
-        } else if (percentage < 40) {
-
-            riskText =
-                "🟠 Risque important";
-
-        } else if (percentage < 60) {
-
-            riskText =
-                "🔴 Risque élevé";
+            color =
+                "rgb(255, 0, 0)";
 
         } else {
 
-            riskText =
-                "🚨 RISQUE TRÈS ÉLEVÉ";
+            for (
+                let i = 0;
+                i < stops.length - 1;
+                i++
+            ) {
+
+                const current =
+                    stops[i];
+
+
+                const next =
+                    stops[i + 1];
+
+
+                if (
+                    percentage >=
+                        current.limit &&
+                    percentage <=
+                        next.limit
+                ) {
+
+                    const ratio =
+                        (
+                            percentage -
+                            current.limit
+                        ) /
+                        (
+                            next.limit -
+                            current.limit
+                        );
+
+
+                    const r =
+                        Math.round(
+                            current.color[0] +
+                            (
+                                next.color[0] -
+                                current.color[0]
+                            ) *
+                            ratio
+                        );
+
+
+                    const g =
+                        Math.round(
+                            current.color[1] +
+                            (
+                                next.color[1] -
+                                current.color[1]
+                            ) *
+                            ratio
+                        );
+
+
+                    const b =
+                        Math.round(
+                            current.color[2] +
+                            (
+                                next.color[2] -
+                                current.color[2]
+                            ) *
+                            ratio
+                        );
+
+
+                    color =
+                        `rgb(${r}, ${g}, ${b})`;
+
+
+                    break;
+                }
+            }
         }
 
 
-        box.innerHTML = `
-            <strong>${riskText}</strong>
-            <br><br>
-
-            Avec
-            <strong>${myHand.length}</strong>
-            carte(s) dans ta main, tu as
-            <strong>${percentage.toFixed(1)} %</strong>
-            de risque de bust au prochain tirage.
-
-            <br><br>
-
-            Ton score actuel est de
-            <strong>${currentScore}</strong>
-            point(s).
-
-            <br>
-
-            L'espérance du prochain tirage est de
-            <strong>${expectedGain.toFixed(2)}</strong>
-            point(s).
-
-            <br>
-
-            Ton score espéré après le prochain tirage est de
-            <strong>${(
-                currentScore + expectedGain
-            ).toFixed(2)}</strong>
-            point(s).
-        `;
+        document.body.style.background =
+            color;
     }
 
 
     /* =====================================================
-       MISE À JOUR GÉNÉRALE
+       MISE À JOUR ANALYSE
     ===================================================== */
 
     function updateAnalysis() {
@@ -1428,7 +1733,10 @@
         document.getElementById(
             "bustProbability"
         ).textContent =
-            `${(bustProbability * 100).toFixed(1)} %`;
+            (
+                bustProbability * 100
+            ).toFixed(1) +
+            " %";
 
 
         document.getElementById(
@@ -1452,18 +1760,11 @@
         updateRiskBackground(
             bustProbability
         );
-
-
-        updateExplanation(
-            bustProbability,
-            expectedGain,
-            currentScore
-        );
     }
 
 
     /* =====================================================
-       VIDER MA MAIN
+       VIDER
     ===================================================== */
 
     function clearSelection() {
@@ -1475,12 +1776,14 @@
 
         renderMyHand();
 
+        renderPlayers();
+
         updateAnalysis();
     }
 
 
     /* =====================================================
-       NOUVELLE ANALYSE
+       RESET
     ===================================================== */
 
     function resetGame() {
@@ -1517,4 +1820,5 @@
 </script>
 
 </body>
+
 </html>
